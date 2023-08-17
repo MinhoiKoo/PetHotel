@@ -7,11 +7,11 @@ import retrofit2.http.*
 
 interface MyApi {
 
-    data class TokenResponse(val token : String, val name : String, val error : String)
 
-    // 전체 멤버 수, 리스트 조회
-    @GET("api/members")
-    suspend fun getMemberList() : Response<List<MemberDto>>
+
+    // 자기 자신 조회
+    @GET("api/members/myinfo")
+    suspend fun getMemberList() : Response<MyInfoResponse>
 
     @POST("api/members")
     suspend fun createMember(@Body member : CreateMemberRequest) : Response<CreateMemberResponse>
@@ -21,7 +21,27 @@ interface MyApi {
 
     // Login 요청하면 Server에서 Token 받음
     @POST("api/members/login")
-    suspend fun login(@Body member : MemberDto) : Response<TokenResponse>
+    suspend fun userLogin(@Body member : MemberDto) : Response<LoginResponse>
 
+    @POST("api/members/logout")
+    suspend fun logout() : Response<LogoutResponse>
+
+    @POST("api/owners/login")
+    suspend fun ownerLogin(@Body member : MemberDto) : Response<LoginResponse>
+
+    @GET("api/owners/myinfo")
+    suspend fun ownerInfo() : Response<MyInfoResponse>
+
+    @POST("api/owners")
+    suspend fun createOwner(@Body owner : CreateOwnerRequest) : Response<CreateOwnerResponse>
+
+    @POST("api/hotel")
+    suspend fun createHotel(@Body hotel : CreateHotelRequest) : Response<CreateOwnerResponse>
+
+    @GET("api/hotels")
+    suspend fun getHotelList() : Response<List<HotelDto>>
+
+    @GET("api/hotels/hotelinfo/{id}")
+    suspend fun getHotelInfo(@Path("id") id : Long) : Response<HotelInfoDto>
 
 }

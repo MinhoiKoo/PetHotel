@@ -27,13 +27,43 @@
                 android:layout_height="match_parent"
                 android:text="입력"/>
 
+
+
         </LinearLayout>
 
         <Button
-            android:id="@+id/loginBtn"
+            android:id="@+id/ownerLoginBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="로그인"/>
+            android:text="관리자 로그인"/>
+        <Button
+            android:id="@+id/userLoginBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="사용자 로그인"/>
+
+        <Button
+            android:id="@+id/logoutBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="로그아웃"/>
+
+        <Button
+            android:id="@+id/myInfoBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="내정보 불러오기"/>
+
+        <Button
+            android:id="@+id/toHotelList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="호텔 리스트 보기"/>
+        <ImageView
+            android:id="@+id/imageSelectBtn"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:src="@drawable/addimage"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv"
