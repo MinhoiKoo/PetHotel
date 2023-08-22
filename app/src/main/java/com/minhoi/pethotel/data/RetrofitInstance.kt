@@ -12,12 +12,13 @@ import java.util.concurrent.TimeUnit
 
 
 object RetrofitInstance {
-    val BASE_URL = "http://13.125.34.73:8080/"
+    val BASE_URL = "http://13.125.142.8:8080/"
 
     // 로그인시 Token 받아오는 객체
     private val clientWithOutToken = Retrofit
         .Builder()
         .baseUrl(BASE_URL)
+        .addConverterFactory(ScalarsConverterFactory.create())
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 

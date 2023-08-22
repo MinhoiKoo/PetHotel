@@ -2,8 +2,11 @@ package com.minhoi.pethotel.data
 
 import com.minhoi.pethotel.data.*
 import com.minhoi.pethotel.data.model.*
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Response
 import retrofit2.http.*
+import java.lang.ref.ReferenceQueue
 
 interface MyApi {
 
@@ -44,4 +47,18 @@ interface MyApi {
     @GET("api/hotels/hotelinfo/{id}")
     suspend fun getHotelInfo(@Path("id") id : Long) : Response<HotelInfoDto>
 
+    @Multipart
+    @POST("api/hotel")
+    suspend fun registerHotel(
+        @Query("name") name : String,
+        @Query("bsNum") bsNum : String,
+        @Query("description") description : String,
+        @Part imageFiles : List<MultipartBody.Part>
+    ) : Response<CreateOwnerResponse>
+
+    @GET("{imageName}")
+    suspend fun getImage(@Path("imageName") imageName : String) : Response<String>
+
+    @GET("{imageNames}")
+    suspend fun getImages(@Path("imageNames") imageNames : String) : Response<List<String>>
 }
