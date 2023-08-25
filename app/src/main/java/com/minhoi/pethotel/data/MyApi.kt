@@ -30,7 +30,7 @@ interface MyApi {
     suspend fun logout() : Response<LogoutResponse>
 
     @POST("api/owners/login")
-    suspend fun ownerLogin(@Body member : MemberDto) : Response<LoginResponse>
+    suspend fun ownerLogin(@Body member : MemberDto) : Response<LoginOwnerResponse>
 
     @GET("api/owners/myinfo")
     suspend fun ownerInfo() : Response<MyInfoResponse>
